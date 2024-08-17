@@ -1,0 +1,5 @@
+.banner {
+  height: 700px;
+  border-bottom: 1px solid var(--black20);
+  background-image: url("../assets/Image.png");
+}

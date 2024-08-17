@@ -1,0 +1,85 @@
+@import url("https://fonts.cdnfonts.com/css/gilroy-bold");
+
+:root {
+  --color-red: #f41b3b;
+  --color-green: #1ebc99;
+  --color-yellow: #f9cc0d;
+  --color-blue: #1884f7;
+  --gradient-color: linear-gradient(to right, #f41b3b 50%, #1884f7 50%);
+  --black: #0a070b;
+  --black50: #363536;
+  --black20: #4f4e50;
+  --black10: #ced0d1;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #fff;
+  list-style: none;
+  text-decoration: none;
+}
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: "Gilroy", sans-serif;
+  background-color: var(--black);
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+h1 {
+  font-size: 3rem;
+  font-family: "Gilroy-Bold", sans-serif;
+}
+h2 {
+  font-size: 2.2rem;
+  font-family: "Gilroy-Bold", sans-serif;
+}
+h3 {
+  font-size: 1.5rem;
+  font-family: "Gilroy", sans-serif;
+}
+h4 {
+  font-size: 1rem;
+  font-family: "Gilroy", sans-serif;
+}
+h5 {
+  font-size: 1rem;
+  font-family: "Gilroy", sans-serif;
+}
+p {
+  font-size: 1rem;
+  font-family: "Gilroy", sans-serif;
+}
+a {
+  font-weight: 500;
+  color: #fff;
+}
+a:hover {
+  color: var(--color-blue);
+}
+
+button {
+  border-radius: 3px;
+  background: var(--color-red);
+  padding: 5px 32px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 22px;
+  border: 1px solid var(--color-red);
+}
+button:hover {
+  border-color: var(--color-red);
+  background-color: transparent;
+  color: var(--color-red);
+}
+.container {
+  padding: 39px 20px;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}

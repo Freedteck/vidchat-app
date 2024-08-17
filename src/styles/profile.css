@@ -1,0 +1,8 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 100px;
+  max-width: 1280px;
+  margin: 0 auto;
+}

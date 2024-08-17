@@ -1,0 +1,36 @@
+.video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.card-row .card {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  justify-content: flex-end;
+  border-radius: 3px;
+}
+.card img {
+  width: 100%;
+  flex: 1;
+}
+.card-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  background-color: var(--black50);
+  border-radius: 3px;
+  margin: 0 5px 5px;
+}
