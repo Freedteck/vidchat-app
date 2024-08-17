@@ -15,6 +15,7 @@ import VideoDetails from "./pages/VideoDetails.jsx";
 import Profile from "./pages/Profile.jsx";
 import Navbar from "./components/Navbar.jsx";
 import accountBalance from "./components/hedera/accountBalance.js";
+import Chat from "./pages/Chat.jsx";
 
 function App() {
   const topicId = process.env.REACT_APP_TOPIC_ID;
@@ -284,6 +285,10 @@ function App() {
           <Route
             path="/profile"
             element={<Profile userAccountId={accountId} />}
+          />
+          <Route
+            path="/:creatorId"
+            element={<Chat currentUser={accountId} walletData={walletData} />}
           />
         </Routes>
       </Router>
