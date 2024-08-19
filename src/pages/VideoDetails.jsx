@@ -28,6 +28,13 @@ const VideoDetails = ({ videoData, walletData, accountId }) => {
     }
   };
 
+  const formatTopicId = (topicId) => {
+    const shard = topicId.shard.low;
+    const realm = topicId.realm.low;
+    const num = topicId.num.low;
+    return `${shard}.${realm}.${num}`;
+  };
+
   return (
     <div className="container video-details">
       <div className="video-player">
@@ -45,7 +52,9 @@ const VideoDetails = ({ videoData, walletData, accountId }) => {
         </div>
         <div className="actions">
           <button onClick={() => setShowTipModal(true)}>Tip Creator</button>
-          <Link to={`/${video.uploader}`}>Chat</Link>
+          <Link to={`/${video.uploader}/chat/${formatTopicId(video.topicId)}`}>
+            Chat
+          </Link>
         </div>
       </div>
 
