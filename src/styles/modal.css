@@ -19,15 +19,20 @@
   border-radius: 8px;
   text-align: center;
   width: 300px;
-  box-shadow: 0px 5px 15px var(--black20);
 }
 
 .tip-buttons {
   display: flex;
   align-items: center;
   gap: 10px;
+  justify-content: space-between;
 }
-
+.btns {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
 .tip-buttons button,
 .custom-tip button {
   padding: 10px;
@@ -43,8 +48,13 @@
   align-items: center;
   gap: 10px;
 }
-
-.custom-tip input {
+.custom-transfer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.custom-tip input,
+.custom-transfer input {
   padding: 10px;
   border: 1px solid var(--black20);
   border-radius: 3px;

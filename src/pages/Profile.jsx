@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/profile.css";
 import tokenBalanceFcn from "../components/hedera/tokenBalance";
 import { Link } from "react-router-dom";
+import hbarTransfer from "../components/hedera/hbarTransfer";
+import HbarTransferModal from "../components/HbarTransferModal";
 
-const Profile = ({ userAccountId, uploadedVideos, balance }) => {
+const Profile = ({ userAccountId, uploadedVideos, balance, walletData }) => {
   const [tokenBalance, setTokenBalance] = useState(0);
+  const [accountBalance, setAccountBalance] = useState(balance);
   const [activeTab, setActiveTab] = useState("videos");
   const [userVideos, setUserVideos] = useState([]);
   const [filteredMessages, setFilteredMessages] = useState([]);
   const [topicId, setTopicId] = useState("");
   const tokenId = process.env.REACT_APP_TOKEN_ID;
+  const [showTransferModal, setShowTransferModal] = useState(false);
 
   const formatTopicId = (topicId) => {
     if (typeof topicId === "string") return topicId;
@@ -56,12 +60,10 @@ const Profile = ({ userAccountId, uploadedVideos, balance }) => {
             return JSON.parse(decodedMessage);
           });
 
-          // Sort messages by timestamp
           messages.sort(
             (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
           );
 
-          // Filter out messages where the current user is the sender
           const latestMessages = {};
           messages.forEach((msg) => {
             if (msg.sender !== userAccountId) {
@@ -69,7 +71,6 @@ const Profile = ({ userAccountId, uploadedVideos, balance }) => {
             }
           });
 
-          // Convert the latestMessages object to an array
           const sortedFilteredMessages = Object.values(latestMessages);
           setFilteredMessages(sortedFilteredMessages);
         })
@@ -78,6 +79,25 @@ const Profile = ({ userAccountId, uploadedVideos, balance }) => {
         });
     }
   }, [topicId, userAccountId]);
+
+  const handleTransferHbar = async (amount, receiverAccountId) => {
+    const [status] = await hbarTransfer(
+      walletData,
+      userAccountId,
+      receiverAccountId,
+      amount
+    );
+    if (status === "SUCCESS") {
+      console.log("Hbar transfer successful!");
+      // Refresh the balance after transfer
+      try {
+        const newBalance = await tokenBalanceFcn(userAccountId, tokenId);
+        setAccountBalance(newBalance);
+      } catch (error) {
+        console.error("Error refreshing account balance:", error);
+      }
+    }
+  };
 
   return (
     <div className="container profile-page">
@@ -93,7 +113,10 @@ const Profile = ({ userAccountId, uploadedVideos, balance }) => {
           </p>
         </div>
         <div>
-          Account Balance: <p>{balance}</p>
+          Account Balance: <p>{accountBalance}</p>
+          <button onClick={() => setShowTransferModal(true)}>
+            Transfer HBAR
+          </button>
         </div>
       </div>
       <div className="tabs">
@@ -155,6 +178,13 @@ const Profile = ({ userAccountId, uploadedVideos, balance }) => {
           </ul>
         )}
       </div>
+
+      {/* HBAR Transfer Modal */}
+      <HbarTransferModal
+        showModal={showTransferModal}
+        onClose={() => setShowTransferModal(false)}
+        onTransfer={handleTransferHbar}
+      />
     </div>
   );
 };

@@ -310,6 +310,7 @@ function App() {
                 userAccountId={accountId}
                 uploadedVideos={videoData}
                 balance={balance}
+                walletData={walletData}
               />
             }
           />
