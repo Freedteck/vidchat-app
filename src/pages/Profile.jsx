@@ -3,11 +3,10 @@ import "../styles/profile.css";
 import tokenBalanceFcn from "../components/hedera/tokenBalance";
 import { Link } from "react-router-dom";
 
-const Profile = ({ userAccountId, uploadedVideos }) => {
+const Profile = ({ userAccountId, uploadedVideos, balance }) => {
   const [tokenBalance, setTokenBalance] = useState(0);
   const [activeTab, setActiveTab] = useState("videos");
   const [userVideos, setUserVideos] = useState([]);
-  const [userMessages, setUserMessages] = useState([]);
   const [filteredMessages, setFilteredMessages] = useState([]);
   const [topicId, setTopicId] = useState("");
   const tokenId = process.env.REACT_APP_TOKEN_ID;
@@ -84,8 +83,18 @@ const Profile = ({ userAccountId, uploadedVideos }) => {
     <div className="container profile-page">
       <h1>User Profile</h1>
       <div className="profile-details">
-        <p>Account ID: {userAccountId}</p>
-        <p>Token Balance: {tokenBalance} VCT tokens</p>
+        <div>
+          Account ID: <p>{userAccountId}</p>
+        </div>
+        <div>
+          Token Balance:{" "}
+          <p>
+            {tokenBalance} <span className="logo">VCT</span>
+          </p>
+        </div>
+        <div>
+          Account Balance: <p>{balance}</p>
+        </div>
       </div>
       <div className="tabs">
         <button

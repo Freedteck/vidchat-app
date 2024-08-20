@@ -35,6 +35,8 @@ const VideoDetails = ({ videoData, walletData, accountId }) => {
     return `${shard}.${realm}.${num}`;
   };
 
+  const isUploader = accountId === video.uploader;
+
   return (
     <div className="container video-details">
       <div className="video-player">
@@ -51,10 +53,22 @@ const VideoDetails = ({ videoData, walletData, accountId }) => {
           </p>
         </div>
         <div className="actions">
-          <button onClick={() => setShowTipModal(true)}>Tip Creator</button>
-          <Link to={`/${video.uploader}/chat/${formatTopicId(video.topicId)}`}>
-            Chat
-          </Link>
+          <button
+            onClick={() => setShowTipModal(true)}
+            disabled={isUploader}
+            className={isUploader ? "disabled-button" : ""}
+            title={isUploader ? "You cannot tip yourself" : "Tip the creator"}
+          >
+            Tip Creator
+          </button>
+
+          {!isUploader && (
+            <Link
+              to={`/${video.uploader}/chat/${formatTopicId(video.topicId)}`}
+            >
+              Chat
+            </Link>
+          )}
         </div>
       </div>
 
@@ -68,7 +82,6 @@ const VideoDetails = ({ videoData, walletData, accountId }) => {
         </div>
       </div>
 
-      {/* Tip Modal */}
       <TipModal
         showModal={showTipModal}
         onClose={() => setShowTipModal(false)}

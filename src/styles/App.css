@@ -57,7 +57,8 @@ a {
   font-weight: 500;
   color: #fff;
 }
-a:hover {
+a:hover,
+a.active {
   color: var(--color-blue);
 }
 

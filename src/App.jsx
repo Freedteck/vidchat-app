@@ -173,6 +173,22 @@ function App() {
     }
   }, [accountId, walletData]);
 
+  const fetchVideoData = async () => {
+    try {
+      const response = await fetch(
+        `https://testnet.mirrornode.hedera.com/api/v1/topics/${topicId}/messages`
+      );
+      const data = await response.json();
+      const messages = data.messages.map((message) => {
+        const decodedMessage = atob(message.message); // decode base64
+        return JSON.parse(decodedMessage); // parse JSON
+      });
+      return messages;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     fetch(
       `https://testnet.mirrornode.hedera.com/api/v1/topics/${topicId}/messages`
@@ -193,12 +209,12 @@ function App() {
 
   return (
     <div className="App">
-      <MyGroup
+      {/* <MyGroup
         fcn={topicCreator}
         buttonLabel={"Create New Topic"}
         text={topicTextSt}
         link={topicLinkSt}
-      />
+      /> */}
       {/* <MyGroup
         fcn={connectWallet}
         buttonLabel={"Connect Wallet"}
@@ -269,7 +285,10 @@ function App() {
           connectWallet={connectWallet}
         />
         <Routes>
-          <Route path="/" element={<HomePage videoData={videoData} />} />
+          <Route
+            path="/"
+            element={<HomePage fetchVideoDetails={fetchVideoData} />}
+          />
           <Route
             path="/upload"
             element={<Upload accountId={accountId} walletData={walletData} />}
@@ -287,7 +306,11 @@ function App() {
           <Route
             path="/profile"
             element={
-              <Profile userAccountId={accountId} uploadedVideos={videoData} />
+              <Profile
+                userAccountId={accountId}
+                uploadedVideos={videoData}
+                balance={balance}
+              />
             }
           />
           <Route

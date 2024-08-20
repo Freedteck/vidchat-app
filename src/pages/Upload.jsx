@@ -4,6 +4,7 @@ import { pinata } from "../components/pinata/pinata";
 import toast, { Toaster } from "react-hot-toast";
 import topicMessageFnc from "../components/hedera/topicMessage";
 import topicCreate from "../components/hedera/topicCreate";
+import { useNavigate } from "react-router-dom";
 
 function Upload({ accountId, walletData }) {
   const [thumbnail, setThumbnail] = useState(null);
@@ -14,6 +15,7 @@ function Upload({ accountId, walletData }) {
   const [description, setDescription] = useState("");
   const [label, setLabel] = useState("");
   const [uploaderTopicId, setUploaderTopicId] = useState(null);
+  const navigate = useNavigate();
 
   const myTopicId = process.env.REACT_APP_TOPIC_ID;
   const gatewayUrl = process.env.REACT_APP_GATEWAY_URL;
@@ -266,6 +268,7 @@ function Upload({ accountId, walletData }) {
       toast.dismiss();
       toast.success("Upload Successful!");
       console.log(videoMetadata);
+      navigate("/");
     } catch (error) {
       toast.dismiss();
       toast.error("Upload Failed!");

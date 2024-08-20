@@ -99,7 +99,18 @@
   line-height: 22px;
   border: 1px solid var(--color-red);
 }
+
 .actions a:hover {
   background-color: var(--color-red);
   color: #fff;
+}
+.container .actions button.disabled-button {
+  background-color: var(--black20);
+  color: #fff;
+  cursor: not-allowed;
+  border-color: var(--black20);
+}
+
+.container .actions button:disabled {
+  cursor: not-allowed;
 }
