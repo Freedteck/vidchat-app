@@ -18,7 +18,7 @@ const Chat = ({ currentUser, walletData }) => {
       timestamp: new Date().toISOString(),
     };
 
-    const [status, transactionId] = await topicMessageFnc(
+    const [status] = await topicMessageFnc(
       walletData,
       currentUser,
       topicId,

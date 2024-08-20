@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import MyGroup from "./components/MyGroup.jsx";
+// import MyGroup from "./components/MyGroup.jsx";
 import walletConnectFcn from "./components/hedera/walletConnect.js";
 // import tokenCreateFcn from "./components/hedera/tokenCreate.js";
 // import tokenMintFcn from "./components/hedera/tokenMint.js";
 // import contractDeployFcn from "./components/hedera/contractDeploy.js";
 // import contractExecuteFcn from "./components/hedera/contractExecute.js";
 import "./styles/App.css";
-import topicCreate from "./components/hedera/topicCreate.js";
+// import topicCreate from "./components/hedera/topicCreate.js";
 // import topicMessageFnc from "./components/hedera/topicMessage.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
@@ -23,13 +23,13 @@ function App() {
   const [accountId, setAccountId] = useState();
   // const [tokenId, setTokenId] = useState();
   // const [tokenSupply, setTokenSupply] = useState();
-  const [NewtopicId, setNewTopicId] = useState();
+  // const [NewtopicId, setNewTopicId] = useState();
   // const [contractId, setContractId] = useState();
 
   // const [connectTextSt, setConnectTextSt] = useState("🔌 Connect here...");
   // const [createTextSt, setCreateTextSt] = useState("");
   // const [mintTextSt, setMintTextSt] = useState("");
-  const [topicTextSt, setTopicTextSt] = useState("");
+  // const [topicTextSt, setTopicTextSt] = useState("");
   // const [messageTextSt, setMessageTextSt] = useState("");
   // const [contractTextSt, setContractTextSt] = useState();
   // const [trasnferTextSt, setTransferTextSt] = useState();
@@ -37,7 +37,7 @@ function App() {
   // const [connectLinkSt, setConnectLinkSt] = useState("");
   // const [createLinkSt, setCreateLinkSt] = useState("");
   // const [mintLinkSt, setMintLinkSt] = useState("");
-  const [topicLinkSt, setTopicLinkSt] = useState("");
+  // const [topicLinkSt, setTopicLinkSt] = useState("");
   // const [messageLinkSt, setMessageLinkSt] = useState("");
   // const [contractLinkSt, setContractLinkSt] = useState();
   // const [trasnferLinkSt, setTransferLinkSt] = useState();
@@ -100,16 +100,16 @@ function App() {
   //   }
   // }
 
-  async function topicCreator() {
-    console.log("Create topic");
+  // async function topicCreator() {
+  //   console.log("Create topic");
 
-    const [newTopicId] = await topicCreate(walletData, accountId);
-    // setTopicId(newTopicId);
-    console.log(newTopicId);
+  //   const [newTopicId] = await topicCreate(walletData, accountId);
+  //   // setTopicId(newTopicId);
+  //   console.log(newTopicId);
 
-    setTopicTextSt(`New Topic id is ${newTopicId}! ✅`);
-    setTopicLinkSt(`https://hashscan.io/#/testnet/transaction/${newTopicId}`);
-  }
+  //   setTopicTextSt(`New Topic id is ${newTopicId}! ✅`);
+  //   setTopicLinkSt(`https://hashscan.io/#/testnet/transaction/${newTopicId}`);
+  // }
 
   // async function topicMessage() {
   //   console.log("Submitting message");

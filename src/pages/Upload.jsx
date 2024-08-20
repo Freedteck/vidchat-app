@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/upload.css";
 import { pinata } from "../components/pinata/pinata";
 import toast, { Toaster } from "react-hot-toast";
@@ -14,7 +14,7 @@ function Upload({ accountId, walletData }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [label, setLabel] = useState("");
-  const [uploaderTopicId, setUploaderTopicId] = useState(null);
+  // const [uploaderTopicId, setUploaderTopicId] = useState(null);
   const navigate = useNavigate();
 
   const myTopicId = process.env.REACT_APP_TOPIC_ID;
