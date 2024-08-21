@@ -1,20 +1,39 @@
-# Hedera dApp Days
+# Vid Chat
+
+VidChat is a decentralized video sharing and chatting platform built on the Hedera network. VidChat empowers users to share content, engage with creators, and support them directly, all within a secure and decentralized environment.
 
 # Pre-requisites:
 
 - Have a GitHub account: https://github.com/
 - Install the HashPack wallet (browser extension): https://www.hashpack.app/
 - Create a Hedera testnet account: https://portal.hedera.com/register
-- Read the article [How to Start Developing on Hedera: Back to the Basics](https://hedera.com/blog/how-to-develop-on-hedera-back-to-the-basics)
+- Sign up and Obtain your Pinata jwt and Gateway url: https://www.pinata.cloud/
 
 # Slides:
 
-- [Hedera Rocks - dApp Day Slides.pdf](https://github.com/ed-marquez/hedera-dapp-days/blob/main/slides/Hedera%20Rocks%20-%20dApp%20Day%20Slides.pdf)
+- [Vid Chat - vidchat.pdf](./slides/vidchat.pdf)
 
-# What's next after this dApp day?
+# Setup
 
-- Join the [Hedera Developer Discord](http://hedera.com/discord)
-- Try [examples](https://docs.hedera.com/guides/getting-started/try-examples), [tutorials](https://docs.hedera.com/guides/resources/tutorials), and [demo applications](https://docs.hedera.com/guides/resources/demo-applications)
-- Check out the [Getting Started Portal](https://hedera.com/get-started)
-- Join us for a another [dApp Day](https://hedera.com/dapp-days), [hackathon, or event](https://hedera.com/events)
-# vidchat-app
+- clone this repo: `git clone https://github.com/Freedteck/vidchat-app.git`
+- install packages: `npm install`
+- add environment variables: see [Environment Variables](#environment-variables)
+- Start application: `npm start`
+
+## Environment Variables
+
+- Create a `.env` in the root directory of your project.
+- Paste the following in the `.env` file:
+
+```
+REACT_APP_PINATA_JWT=<Your Pinata Jwt>
+REACT_APP_GATEWAY_URL=<Your Pinata Gateway url>
+REACT_APP_MY_ACCOUNT_ID=<Your Hedera Account Id>
+REACT_APP_TOPIC_ID=0.0.4702122 # Leave as it is
+REACT_APP_TOKEN_ID=0.0.4680264 # Leave as it is
+REACT_APP_MY_PRIVATE_KEY=<Hedera Private key>
+```
+
+# Live Url
+
+You can view this project live at: [Live url](https://vidchat-app.netlify.app/)
